@@ -1,7 +1,9 @@
+
+
 # Pitney Bowes Location Intelligence API
 
 ### Description
-Location Intelligence APIs help you to Incorporate Pitney Bowes extensive geodata into everyday applications, business processes, and workflows. Use our SDKs to get started quickly and easily integrate API calls in your applications.
+[Location Intelligence APIs ](http://developer.pitneybowes.com/en/location-intelligence.html) help you to Incorporate Pitney Bowes extensive geodata into everyday applications, business processes, and workflows. Use our SDKs to get started quickly and easily integrate API calls in your applications.
 
 ### Location Intelligence APIs:
 * [GeoEnhance](https://developer2.pitneybowes.com/en/geoenhance.php ) : Returns addresses, place names, points-of-interest and timezones with the input of a location coordinate. Useful for enhancing & enriching your geo-tagged data.
@@ -23,12 +25,18 @@ The following platforms are supported by Location Intelligence SDKs:
 *	[Java](https://developer2.pitneybowes.com/docs/location-intelligence/v1/en/index.html#Java%20SDK/java_intro.html)
 *	[C#](https://developer2.pitneybowes.com/docs/location-intelligence/v1/en/index.html#C_sdk/java_intro.html)  
 
-[Click here]((https://developer2.pitneybowes.com/docs/location-intelligence/v1/en/index.html)) for detailed Documentation on Location Intelligence APIs 
+[Click here](https://developer2.pitneybowes.com/docs/location-intelligence/v1/en/index.html) for detailed Documentation on Location Intelligence APIs 
 
 
 # Location Intelligence Android SDK
 ### Description
 Location Intelligence Android SDK facilitates you to build Android applications using Location Intelligence APIs.
 ### Getting Started
-To get started with Android SDK, you must first register at [Registration Link](http://developer.pitneybowes.com/en/location-intelligence.html) and obtain your API Key and Secret to get started with the Android SDK and call Location Intelligence APIs.
+To get started with Android SDK, you must first register at [Location Intelligence API Home Page](http://developer.pitneybowes.com/en/location-intelligence.html) and obtain your API Key and Secret to get started with the Android SDK and call Location Intelligence APIs.
 For more information refer to [‘Getting Started with Android SDK’](https://developer2.pitneybowes.com/docs/location-intelligence/v1/en/index.html#AndroidSDK/android_gettingstart.html) section in documentation.
+
+### LocationIntelligenceSDK-Java contains the following software
+* javax.json, version number 1.0.4 which is licensed under CDDL and GPL licenses, version number 2.0, with the Glasspath Exception.  The license can be downloaded from https://jsonp.java.net/license.html.  The source code for this software is available from https://jsonp.java.net/.
+* jersey-client, version number 2.11 which is licensed under CDDL and GPL licenses, version number 2.0, with the Glasspath Exception.  The license can be downloaded from https://jersey.java.net/license.html.  The source code for this software is available from https://jersey.java.net/.
+* Json Assert, version number 1.2.3 which is licensed under Apache license, version number 2.0.  The license can be downloaded from http://www.apache.org/licenses/LICENSE-2.0.  The source code for this software is available from https://github.com/skyscreamer/JSONassert. 
+* LOG4J, version number 1.2.17 which is licensed under Apache license, version number 2.0.  The license can be downloaded from http://www.apache.org/licenses/LICENSE-2.0.  The source code for this software is available from http://logging.apache.org/log4j/1.2/ . 
