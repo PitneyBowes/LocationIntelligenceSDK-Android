@@ -1,4 +1,4 @@
-
+![Pitney Bowes](/PitneyBowes_Logo.jpg)
 
 # Pitney Bowes Location Intelligence API
 
@@ -36,7 +36,5 @@ To get started with Android SDK, you must first register at [Location Intelligen
 For more information refer to [‘Getting Started with Android SDK’](https://developer2.pitneybowes.com/docs/location-intelligence/v1/en/index.html#AndroidSDK/android_gettingstart.html) section in documentation.
 
 ### LocationIntelligenceSDK-Java contains the following software
-* javax.json, version number 1.0.4 which is licensed under CDDL and GPL licenses, version number 2.0, with the Glasspath Exception.  The license can be downloaded from https://jsonp.java.net/license.html.  The source code for this software is available from https://jsonp.java.net/.
-* jersey-client, version number 2.11 which is licensed under CDDL and GPL licenses, version number 2.0, with the Glasspath Exception.  The license can be downloaded from https://jersey.java.net/license.html.  The source code for this software is available from https://jersey.java.net/.
-* Json Assert, version number 1.2.3 which is licensed under Apache license, version number 2.0.  The license can be downloaded from http://www.apache.org/licenses/LICENSE-2.0.  The source code for this software is available from https://github.com/skyscreamer/JSONassert. 
-* LOG4J, version number 1.2.17 which is licensed under Apache license, version number 2.0.  The license can be downloaded from http://www.apache.org/licenses/LICENSE-2.0.  The source code for this software is available from http://logging.apache.org/log4j/1.2/ . 
+* GSON, version number 2.3.1 which is licensed under Apache license, version number 2.0.  The license can be downloaded from http://www.apache.org/licenses/LICENSE-2.0.  The source code for this software is available from http://code.google.com/p/google-gson/.
+* Volley, version number 1.0.0 which is licensed under Apache license, version number 2.0.  The license can be downloaded from http://www.apache.org/licenses/LICENSE-2.0.  The source code for this software is available from http://developer.android.com/training/volley/index.html. 
