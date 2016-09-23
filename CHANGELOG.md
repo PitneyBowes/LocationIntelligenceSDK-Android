@@ -1,3 +1,7 @@
+## 2.5.0 - 2016-08-05
+- Changes for GeoComm API.
+- Changes for 
+
 ## 2.0.0 - 2016-08-05
 - Moved Segmentation under Geolife to Align LiAPIs also updated Test Cases Accordingly.
 
