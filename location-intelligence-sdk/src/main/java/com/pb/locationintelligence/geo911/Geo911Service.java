@@ -16,6 +16,7 @@ package com.pb.locationintelligence.geo911;
 
 import android.content.Context;
 
+import com.pb.locationintelligence.geo911.model.AHJPlusPSAPResponse;
 import com.pb.locationintelligence.geo911.model.PsapResponse;
 import com.pb.locationintelligence.interfaces.RequestObserver;
 
@@ -55,5 +56,35 @@ public interface Geo911Service {
      * 			Required - Asynchronous request observer
      */
     public void getPSAPByLocation(Context context, Double latitude, Double longitude, RequestObserver<PsapResponse> requestObserver);
+
+	/**
+	 * Retrieves Authorities having jurisdiction and Public Safety Answering Points (PSAP) details.
+	 * Accepts the address as input and returns AHJ and PSAP locations' details
+	 * including agency name, phone number, county name, coverage, contact person's
+	 * details, site details and mailing address
+	 * @param context
+	 * 			Required - Android Context
+	 * @param address
+	 * 			Required - Free-form address text
+	 * @param requestObserver
+	 * 			Required - Asynchronous request observer
+	 */
+	public void getAHJPlusPSAPByAddress(Context context, String address, RequestObserver<AHJPlusPSAPResponse> requestObserver);
+
+	/**
+	 * Retrieves Authorities having jurisdiction and Public Safety Answering Points (PSAP) details.
+	 * Accepts latitude and longitude co-ordinates as input and returns AHJ and PSAP locations' details
+	 * including agency name, including agency name, phone number, county name, coverage,
+	 * contact person's details, site details and mailing address.
+	 * @param context
+	 * 			Required - Android Context
+	 * @param latitude
+	 * 			Required - latitude of the location
+	 * @param longitude
+	 * 			Required - longitude of the location
+	 * @param requestObserver
+	 * 			Required - Asynchronous request observer
+	 */
+	public void getAHJPlusPSAPByLocation(Context context, Double latitude, Double longitude, RequestObserver<AHJPlusPSAPResponse> requestObserver);
 
 }

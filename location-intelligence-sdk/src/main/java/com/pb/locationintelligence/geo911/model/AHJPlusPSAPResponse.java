@@ -12,31 +12,30 @@
  *
  */
 
-package com.pb.locationintelligence.segmentation.model;
+package com.pb.locationintelligence.geo911.model;
 
+/**
+ * This class represents the Authority Having Jurisdiction (AHJ) and Public Safety Answering Points (PSAP) object.
+ */
+public class AHJPlusPSAPResponse
+{
+    private AHJList ahjs;
+    private PsapResponse psap;
 
-public class IndividualValueVariable{
+	public AHJList getAhjs() {
+		return ahjs;
+	}
 
-	protected String name;
-	protected String description;
-	protected String value;
-	String getName() {
-		return name;
+	public void setAhjs(AHJList ahjs) {
+		this.ahjs = ahjs;
 	}
-	void setName(String name) {
-		this.name = name;
+
+	public PsapResponse getPsap() {
+		return psap;
 	}
-	String getDescription() {
-		return description;
-	}
-	void setDescription(String description) {
-		this.description = description;
-	}
-	String getValue() {
-		return value;
-	}
-	void setValue(String value) {
-		this.value = value;
+
+	public void setPsap(PsapResponse psap) {
+		this.psap = psap;
 	}
 
 }

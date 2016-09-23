@@ -17,8 +17,15 @@ package com.pb.locationintelligence.common.model;
 
 public class Distance {
 
+	/**
+	 * Unit in which the distance is measured (for e.g. Feet).
+	 * Based on the unit sent in request, the response is returned,
+	 * for example if 'Feet' is sent in request, value in 'Feet' is returned.
+	 */
 	private String unit;
-	
+	/**
+	 * Distance radius as per the unit selected (For example distance in 'Feet').
+	 */
 	private String value;
 	
 	public String getUnit() {

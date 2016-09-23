@@ -19,10 +19,29 @@ import java.util.Map;
 
 public class CandidateRangeUnit {
 
-	private String placeName;
-	private String unitType;
-	private String highUnitValue;
-	private String lowUnitValue;
+	/**
+	 * If applicable, indicates the name of the candidate's place or building.
+	 */
+	protected String placeName;
+
+	/**
+	 * Indicates the unit type (APT, STE, etc.).
+	 */
+	protected String unitType;
+
+	/**
+	 * Indicates the high unit number for this range unit.
+	 */
+	protected String highUnitValue;
+
+	/**
+	 * Indicates the low unit number for this range unit.
+	 */
+	protected String lowUnitValue;
+
+	/**
+	 * A map of local values associated with the unit.
+	 */
 	private Map customValues;
 
 	public String getPlaceName() {

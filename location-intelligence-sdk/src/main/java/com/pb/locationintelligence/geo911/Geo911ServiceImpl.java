@@ -17,15 +17,10 @@ package com.pb.locationintelligence.geo911;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-
-
-import android.content.Context;
-
 import com.google.gson.Gson;
 import com.pb.locationintelligence.OAuth.AuthToken;
 import com.pb.locationintelligence.OAuth.OAuthService;
+import com.pb.locationintelligence.geo911.model.AHJPlusPSAPResponse;
 import com.pb.locationintelligence.geo911.model.PsapResponse;
 import com.pb.locationintelligence.interfaces.RequestObserver;
 import com.pb.locationintelligence.network.ErrorResponse;
@@ -34,11 +29,14 @@ import com.pb.locationintelligence.utils.Log;
 import com.pb.locationintelligence.utils.UrlMaker;
 import com.pb.locationintelligence.utils.Utils;
 
+import android.content.Context;
+
 public class Geo911ServiceImpl extends OAuthService implements
         Geo911Service {
 
     private GetRestService _GetRestService = null;
     private String geo911Url = "/geo911/v1/psap/";
+    private String geo911AHJUrl = "/geo911/v1/ahj-psap/";
     private UrlMaker urlMaker;
 
     @Override
@@ -49,7 +47,7 @@ public class Geo911ServiceImpl extends OAuthService implements
 
             @Override
             public void onSucess(AuthToken data) {
-                Log.d("Authentication is sucessfull, It's time to call Geo911 API ");
+                Log.d("Authentication is sucessfull, It's time to call Geo911 PSAP API ");
                 urlMaker = UrlMaker.getInstance();
                 String url = urlMaker.getAbsoluteUrl(geo911Url) + "byaddress?"
                         + "address=" + urlMaker.getEncodedURL(getString(address));
@@ -58,7 +56,7 @@ public class Geo911ServiceImpl extends OAuthService implements
 
             @Override
             public void onRequestStart() {
-                Log.d("Authentication request has been started for Geo911 ");
+                Log.d("Authentication request has been started for Geo911 PSAP ");
 
             }
 
@@ -80,7 +78,7 @@ public class Geo911ServiceImpl extends OAuthService implements
 
             @Override
             public void onSucess(AuthToken data) {
-                Log.d("Authentication is sucessfull, It's time to call Geo911 API ");
+                Log.d("Authentication is sucessfull, It's time to call Geo911 PSAP API ");
                 urlMaker = UrlMaker.getInstance();
                 String url = urlMaker.getAbsoluteUrl(geo911Url) + "bylocation?"
                         + "latitude=" + urlMaker.getEncodedURL(getString(latitude)) + "&longitude=" + urlMaker.getEncodedURL(getString(longitude));
@@ -89,7 +87,7 @@ public class Geo911ServiceImpl extends OAuthService implements
 
             @Override
             public void onRequestStart() {
-                Log.d("Authentication request has been started for Geo911 ");
+                Log.d("Authentication request has been started for Geo911 PSAP");
 
             }
 
@@ -163,6 +161,128 @@ public class Geo911ServiceImpl extends OAuthService implements
                     @Override
                     public void onFailure(ErrorResponse errorData) {
                         Log.d("Oops Retrieval of PSAP Details By " + method
+                                + "failed");
+                        requestObserver.onFailure(errorData);
+                    }
+                });
+        _GetRestService.execute();
+    }
+    
+    @Override
+    public void getAHJPlusPSAPByAddress(final Context context, final String address,
+            final RequestObserver<AHJPlusPSAPResponse> requestObserver) {
+
+        super.getAuthenticationToken(context, new RequestObserver<AuthToken>() {
+
+            @Override
+            public void onSucess(AuthToken data) {
+                Log.d("Authentication is sucessfull, It's time to call Geo911 AHJPlusPSAP API ");
+                urlMaker = UrlMaker.getInstance();
+                String url = urlMaker.getAbsoluteUrl(geo911AHJUrl) + "byaddress?"
+                        + "address=" + urlMaker.getEncodedURL(getString(address));
+                getGeo911AHJResponse(context, url, true, requestObserver);
+            }
+
+            @Override
+            public void onRequestStart() {
+                Log.d("Authentication request has been started for Geo911 AHJPlusPSAP");
+
+            }
+
+            @Override
+            public void onFailure(ErrorResponse errorData) {
+                Log.e("Authentication request has been failed" + errorData);
+                requestObserver.onFailure(errorData);
+            }
+        });
+
+    }
+
+    @Override
+    public void getAHJPlusPSAPByLocation(final Context context, final Double latitude,
+            final Double longitude,
+            final RequestObserver<AHJPlusPSAPResponse> requestObserver) {
+
+        super.getAuthenticationToken(context, new RequestObserver<AuthToken>() {
+
+            @Override
+            public void onSucess(AuthToken data) {
+                Log.d("Authentication is sucessfull, It's time to call Geo911 AHJPlusPSAP API ");
+                urlMaker = UrlMaker.getInstance();
+                String url = urlMaker.getAbsoluteUrl(geo911AHJUrl) + "bylocation?"
+                        + "latitude=" + urlMaker.getEncodedURL(getString(latitude)) + "&longitude=" + urlMaker.getEncodedURL(getString(longitude));
+                getGeo911AHJResponse(context, url, false, requestObserver);
+            }
+
+            @Override
+            public void onRequestStart() {
+                Log.d("Authentication request has been started for Geo911 AHJPlusPSAP");
+
+            }
+
+            @Override
+            public void onFailure(ErrorResponse errorData) {
+                Log.e("Authentication request has been failed" + errorData);
+                requestObserver.onFailure(errorData);
+            }
+        });
+    }
+    
+	
+    /**
+     * 
+     * @param context
+     * @param url
+     *            - Geo911 AHJPlusPSAP API Service URL
+     * @param byAddress
+     *            - Flag that will idetify the method and log accordingly
+     * @param requestObserver
+     */
+    private void getGeo911AHJResponse(final Context context, final String url,
+            final boolean byAddress,
+            final RequestObserver<AHJPlusPSAPResponse> requestObserver) {
+
+        final String method = (byAddress) ? "Address " : "Location ";
+        Log.d("Calling Geo911 AHJ Service to retrieve AHJPlusPSAP details by " + method);
+        _GetRestService = new GetRestService(context, url, null,
+                this, new RequestObserver<String>() {
+
+                    @Override
+                    public void onSucess(String data) {
+                        Log.d("AHJPlusPSAP Details By " + method);
+                        AHJPlusPSAPResponse response = null;
+                        try {
+                            JSONObject jsonResponse = new JSONObject(data);
+                            Gson gson = new Gson();
+                            response = gson.fromJson(jsonResponse.toString(),
+                                    AHJPlusPSAPResponse.class);
+
+                            Log.d("Got the AHJPlusPSAP Response " + response);
+
+                        } catch (JSONException e) {
+                            Log.e("Excpetion in Json parsing of geo911 AHJPlusPSAP reponse : "
+                                    + e.getMessage());
+                            ErrorResponse errorResponse = new ErrorResponse(
+                                    Utils.getInternalErrorResponseObject(
+                                            e.getMessage(), e));
+                            errorResponse.setRootErrorMessage(e.getMessage());
+
+                            requestObserver.onFailure(errorResponse);
+                            return;
+                        }
+                        requestObserver.onSucess(response);
+                    }
+
+                    @Override
+                    public void onRequestStart() {
+                        Log.d("AHJPlusPSAP Details By " + method
+                                + "request has been started");
+                        requestObserver.onRequestStart();
+                    }
+
+                    @Override
+                    public void onFailure(ErrorResponse errorData) {
+                        Log.d("Oops Retrieval of AHJPLusPSAP Details By " + method
                                 + "failed");
                         requestObserver.onFailure(errorData);
                     }

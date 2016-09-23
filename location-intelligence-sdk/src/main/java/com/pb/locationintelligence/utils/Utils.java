@@ -20,21 +20,16 @@ import java.io.OutputStream;
 import java.net.URLEncoder;
 import java.util.Map;
 
+import com.pb.locationintelligence.app.PitneyBowesApplication;
+import com.pb.locationintelligence.network.InternalErrorResponse;
+
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-import com.pb.locationintelligence.app.PitneyBowesApplication;
-import com.pb.locationintelligence.network.InternalErrorResponse;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 public class Utils {
 
 
-    private static final Logger _LOG = LoggerFactory.getLogger(Utils.class);
-	
     public static InternalErrorResponse getInternalErrorResponseObject(
             String erMessage, Exception e) {
         InternalErrorResponse irErrorResponse = new InternalErrorResponse();
@@ -52,7 +47,7 @@ public class Utils {
         try {
             encodedParam = URLEncoder.encode(param, "UTF-8");
         } catch (Exception e) {
-            _LOG.error("Unsupported Encoding Exception " + e.getMessage());
+            Log.e("Unsupported Encoding Exception " + e.getMessage());
         }
         return encodedParam;
     }
@@ -82,7 +77,7 @@ public class Utils {
         Log.v("network not available!");
         return false;
     }
-    
+
     public static void appendIfNotNull(StringBuilder urlToAppendTo, Map<String, Object> queryParametersMap) {
         if (urlToAppendTo == null || queryParametersMap == null || queryParametersMap.size() < 1) return;
 

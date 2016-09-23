@@ -20,8 +20,20 @@ import java.util.List;
 
 public class GeocodeServiceResponse {
 
-	private int totalPossibleCandidates;
-	private int totalMatches;
+	/**
+	 * the total number of possible candidates.
+	 */
+	protected int totalPossibleCandidates;
+
+	/**
+	 * the total number of matches.
+	 */
+	protected int totalMatches;
+
+	/**
+	 * lists one or more candidates that matched to your input address/addresses.
+	 * Matching and location information is returned for each match candidate.
+	 */
 	private List<Candidate> candidates;
 
 	public int getTotalPossibleCandidates() {

@@ -17,7 +17,14 @@
 package com.pb.locationintelligence.geotax.model;
 
 public class State {
+	/**
+	 * State code.
+	 */
 	private String code;
+
+	/**
+	 * State name
+	 */
 	private String name;
 
 	public String getCode() {

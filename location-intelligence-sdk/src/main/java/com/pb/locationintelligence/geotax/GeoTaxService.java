@@ -17,7 +17,12 @@ package com.pb.locationintelligence.geotax;
 
 import android.content.Context;
 
+import com.pb.locationintelligence.geotax.model.TaxAddressRequest;
+import com.pb.locationintelligence.geotax.model.TaxLocationRequest;
+import com.pb.locationintelligence.geotax.model.TaxRateAddressRequest;
+import com.pb.locationintelligence.geotax.model.TaxRateLocationRequest;
 import com.pb.locationintelligence.geotax.model.TaxRateResponse;
+import com.pb.locationintelligence.geotax.model.TaxResponseList;
 import com.pb.locationintelligence.interfaces.RequestObserver;
 
 /**
@@ -86,4 +91,60 @@ public interface GeoTaxService {
      * 			Required - Asynchronous request observer
      */
     public void getGeoTaxByAddress(Context context, String taxRateTypeId, String address, Double purchaseAmount, RequestObserver<TaxRateResponse> requestObserver);
+
+
+	/**
+	 *
+	 * @param context
+	 * 			Required - Android Context
+	 * @param taxRateTypeId
+	 * 			Required - Tax Rate Types
+	 * @param request
+	 * 			Required - TaxRateLocationRequest object list with multiple locations.
+	 * @param requestObserver
+	 * 			Required - Asynchronous request observer
+	 */
+	public void getGeoTaxRateBatchByLocation(Context context,String taxRateTypeId, TaxRateLocationRequest request,RequestObserver<TaxResponseList> requestObserver);
+
+
+	/**
+	 *
+	 * @param context
+	 * 			Required - Android Context
+	 * @param taxRateTypeId
+	 * 			Required - Tax Rate Types
+	 * @param request
+	 * 			Required - TaxRateAddressRequest object list with multiple Address.
+	 * @param requestObserver
+	 * 			Required - Asynchronous request observer
+	 */
+	public void getGeoTaxRateByBatchAddress(Context context,String taxRateTypeId, TaxRateAddressRequest request,RequestObserver<TaxResponseList> requestObserver);
+
+
+	/**
+	 *
+	 * @param context
+	 * 			Required - Android Context
+	 * @param taxRateTypeId
+	 * 			Required - Tax Rate Types
+	 * @param request
+	 * 			Required - TaxLocationRequest object list with multiple Address.
+	 * @param requestObserver
+	 * 			Required - Asynchronous request observer
+	 */
+	public void getGeoTaxByBatchLocation(Context context,String taxRateTypeId, TaxLocationRequest request,RequestObserver<TaxResponseList> requestObserver);
+
+
+	/**
+	 *
+	 * @param context
+	 * 			Required - Android Context
+	 * @param taxRateTypeId
+	 * 			Required - Tax Rate Types
+	 * @param request
+	 * 			Required - TaxAddressRequest object list with multiple Address.
+	 * @param requestObserver
+	 * 			Required - Asynchronous request observer
+	 */
+	public void getGeoTaxByBatchAddress(Context context,String taxRateTypeId,TaxAddressRequest request,RequestObserver<TaxResponseList> requestObserver);
 }

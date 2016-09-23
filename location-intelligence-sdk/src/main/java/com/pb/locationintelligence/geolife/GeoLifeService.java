@@ -18,8 +18,10 @@ package com.pb.locationintelligence.geolife;
 import android.content.Context;
 
 import com.pb.locationintelligence.geolife.model.GeoLifeResponse;
+import com.pb.locationintelligence.geolife.model.segmentation.Segmentation;
 import com.pb.locationintelligence.interfaces.RequestObserver;
 
+;
 /**
  * This GeoLifeService Version 2 provides demographic data and lifestyle characteristics for a specific area.
  *
@@ -49,7 +51,7 @@ public interface GeoLifeService {
      * @param requestObserver
      * 			Required - Asynchronous request observer
      */
-    public void getDemographicsByAddress(Context context, String address,String country, String profile, String filter, RequestObserver<GeoLifeResponse> requestObserver);
+    void getDemographicsByAddress(Context context, String address, String country, String profile, String filter, RequestObserver<GeoLifeResponse> requestObserver);
 
     /**
      * Returns the geodemographic range variables - ageTheme, genderTheme, maritalStatusTheme, ethnicityTheme, HouseholdSizeTheme etc 
@@ -73,5 +75,33 @@ public interface GeoLifeService {
      * @param requestObserver
      * 			Required - Asynchronous request observer
      */
-    public void getDemographicsByLocation(Context context, Double latitude, Double longitude, String profile, String filter,  RequestObserver<GeoLifeResponse> requestObserver);
+    void getDemographicsByLocation(Context context, Double latitude, Double longitude, String profile, String filter, RequestObserver<GeoLifeResponse> requestObserver);
+    
+
+
+    /**
+     * Returns the lifestyle segmentation data for the specified address asynchronously
+     * @param context
+     *   		Required - Android Context
+     *  @param address
+	 * 			Required - address text
+     * @param country
+ * 			Optional - Country Code
+*          Acceptable list of country codes: USA,CAN,AUS,SWE,JPN,GBR
+     * @param requestObserver
+     */
+    void getSegmentationByAddress(Context context, String address, String country, RequestObserver<Segmentation> requestObserver);
+
+    /**
+     * Returns the lifestyle segmentation data for the specified location asynchronously
+     * @param context
+     *   		Required - Android Context
+     * @param longitude
+ * 		Required - longitude of the location
+     * @param latitude
+* 		Required - latitude of the location
+     * @param requestObserver
+     */
+    void getSegmentationByLocation(final Context context, final Double longitude, final Double latitude, final RequestObserver<Segmentation> requestObserver);
+
 }

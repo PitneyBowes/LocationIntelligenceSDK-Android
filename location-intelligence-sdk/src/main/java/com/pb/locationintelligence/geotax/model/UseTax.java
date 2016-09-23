@@ -17,15 +17,48 @@
 package com.pb.locationintelligence.geotax.model;
 
 import java.util.List;
-public class UseTax {private Double totalTaxRate;
-private Double totalTaxAmount;
-private Double stateTaxRate;
-private Double stateTaxAmount;
-private Double countyTaxRate;
-private Double countyTaxAmount;
-private Double municipalTaxRate;
-private Double municipalTaxAmount;
-private List<SpecialPurposeDistrictTax> spdsTax;
+public class UseTax {
+	/**
+	 * The sum of the individual Municipal, County, State and SPD use tax rates.
+	 */
+	private Double totalTaxRate;
+
+	/**
+	 * The sum of the individual Municipal, County, State and SPD use tax amounts.
+	 */
+	private Double totalTaxAmount;
+
+	/**
+	 * State use tax rate for the selected tax rate type.
+	 */
+	private Double stateTaxRate;
+
+	/**
+	 * State use tax amount for the selected tax rate type.
+	 */
+	private Double stateTaxAmount;
+
+	/**
+	 * County use tax rate for the selected tax rate type.
+	 */
+	private Double countyTaxRate;
+
+	/**
+	 * County use tax amount for the selected tax rate type.
+	 */
+	private Double countyTaxAmount;
+
+	/**
+	 * Municipality use tax rate for the selected tax rate type.
+	 */
+	private Double municipalTaxRate;
+
+	/**
+	 * Municipality use tax amount for the selected tax rate type.
+	 */
+	private Double municipalTaxAmount;
+
+	private List<SpecialPurposeDistrictTax> spdsTax;
 
 public Double getTotalTaxRate() {
 	return totalTaxRate;

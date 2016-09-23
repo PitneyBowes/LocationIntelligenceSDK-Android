@@ -17,7 +17,15 @@
 package com.pb.locationintelligence.geotax.model;
 
 public class County {
+
+	/**
+	 * County code.
+	 */
 	private String code;
+
+	/**
+	 * County name.
+	 */
 	private String name;
 
 	public String getCode() {

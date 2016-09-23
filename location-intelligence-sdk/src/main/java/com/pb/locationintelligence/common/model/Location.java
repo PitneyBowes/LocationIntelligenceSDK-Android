@@ -23,6 +23,10 @@ public class Location {
     private Poi poi;
     private Distance distance;
     private Geometry geometry;
+
+    /**
+     * Applicable to custom-specified datasets only
+     */
     private String dataset;
 
     private PlaceByLocationResponse place;

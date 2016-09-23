@@ -12,11 +12,23 @@
  *
  */
 
-package com.pb.locationintelligence.segmentation.model;
+package com.pb.locationintelligence.geo911.model;
 
-public class LifeStyleTheme
-    extends Theme
-{
+import java.util.List;
 
+/**
+ * This class represents the List of Authority Having Jurisdiction (AHJ) object.
+ */
+public class AHJList {
 
+	List<AHJ> ahjs;
+
+	public List<AHJ> getAhjs() {
+		return ahjs;
+	}
+
+	public void setAhjs(List<AHJ> ahjs) {
+		this.ahjs = ahjs;
+	}
+	
 }

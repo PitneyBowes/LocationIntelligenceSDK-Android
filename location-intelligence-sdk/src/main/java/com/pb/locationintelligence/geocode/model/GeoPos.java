@@ -21,8 +21,19 @@ import java.util.List;
 
 public class GeoPos {
 
-	private String type;
-	private List<Double> coordinates;
+	/**
+	 * Geometry type. The return value is always Point.
+	 */
+	protected String type;
+
+	/**
+	 * The candidate's geocode, specified as x (longitude) and y (latitiude) coordinates separated by a comma.
+	 */
+	protected List<Double> coordinates;
+
+	/**
+	 * The coordinate reference system used for the candidate's geocode.
+	 */
 	private Crs crs;
 
 	/**

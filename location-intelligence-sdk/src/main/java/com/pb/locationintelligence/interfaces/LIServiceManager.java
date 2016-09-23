@@ -33,9 +33,9 @@ import com.pb.locationintelligence.geosearch.GeoSearchService;
 import com.pb.locationintelligence.geosearch.GeoSearchServiceImpl;
 import com.pb.locationintelligence.geotax.GeoTaxService;
 import com.pb.locationintelligence.geotax.GeoTaxServiceImpl;
-import com.pb.locationintelligence.segmentation.SegmentationService;
-import com.pb.locationintelligence.segmentation.SegmentationServiceImpl;
 import com.pb.locationintelligence.utils.Log;
+import com.pb.locationintelligence.geocomm.GeocommService;
+import com.pb.locationintelligence.geocomm.GeocommServiceImpl;
 
 /**
  * LIServiceManager class is responsible for providing entry point all LI specific
@@ -158,14 +158,6 @@ public class LIServiceManager {
 		return new GeoTaxServiceImpl();
 	}
 
-	/**
-	 * Segmentation Service Handler
-	 * 
-	 * @return an instance of SegmentationService
-	 */
-	public SegmentationService getSegmentationService() {
-		return new SegmentationServiceImpl();
-	}
 	
 	/**
 	 * Geocode Service Handler
@@ -174,6 +166,15 @@ public class LIServiceManager {
 	 */
 	public GeocodeService getGeocodeService() {
 		return new GeocodeServiceImpl();
+	}
+	
+	/**
+	 * Geocomm Service Handler
+	 * 
+	 * @return an instance of GeocommService
+	 */
+	public GeocommService getGeocommService() {
+		return new GeocommServiceImpl();
 	}
 	
 	/**

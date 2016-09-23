@@ -22,9 +22,24 @@ import java.util.List;
 
 public class Dictionary {
 
-    private String vintage;
-    private String source;
-    private String description;
+    /**
+     * 	The data vintage from the vendor.
+     */
+    protected String vintage;
+
+    /**
+     * The data vendor.
+     */
+    protected String source;
+
+    /**
+     * The name of the dictionary.
+     */
+    protected String description;
+
+    /**
+     * A list of countries supported by the specified dictionary.
+     */
     private List<CountrySupport> countrySupportInfos;
 
     /**

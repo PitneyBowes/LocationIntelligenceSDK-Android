@@ -21,6 +21,10 @@ import com.pb.locationintelligence.common.model.Address;
 
 public class TaxRateResponse {
 
+	/**
+	 * Provides the percentage overlap of the geocode to the Place polygon layer.
+	 * The returned percentage value describes the probability that the point falls in the specified Place.
+	 */
 	private Double confidence;
 	private TaxJurisdiction jurisdiction;
 	private Address matchedAddress;
