@@ -24,7 +24,7 @@ import java.util.List;
 public class Geometry {
 
     /**
-     * Geometry Type which is “Point” in this case.
+     * Geometry Type which is "Point" in this case.
      */
     private String type;
     /**
