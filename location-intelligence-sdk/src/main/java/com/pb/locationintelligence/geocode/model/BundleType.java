@@ -22,7 +22,7 @@ public enum BundleType
 	
 	public String value() 
 	{
-        return name();
+        return name().toLowerCase();
     }
 
     public static BundleType fromValue(String v) 
