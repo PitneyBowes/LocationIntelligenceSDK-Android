@@ -25,15 +25,15 @@ import com.pb.locationintelligence.interfaces.RequestObserver;
  * It provides both independent and neutral local search information based on
  * the input of search text and location coordinate w.r.t requested Address or
  * Latitude-Longitude.
- * 
+ *
  * @author GA007JA
- * 
+ *
  */
 public interface GeoSearchService {
 
     /**
      * Retrieves Geo Search results
-     * 
+     *
      * @param context
      *            activity context
      * @param searchText
@@ -46,12 +46,12 @@ public interface GeoSearchService {
      *            Mandatory - Asynchronous request observer
      */
     public void geoSearch(Context context, String searchText,
-            Double originLatitude, Double originLongitude,
-            final RequestObserver<GeoSearch> requestObserver);
+                          Double originLatitude, Double originLongitude,
+                          final RequestObserver<GeoSearch> requestObserver);
 
     /**
      * Retrieves Geo Search results
-     * 
+     *
      * @param context
      *            activity context
      * @param searchText
@@ -66,7 +66,7 @@ public interface GeoSearchService {
      * @param searchRadiusUnit
      *            Optional - Unit used for searchRadius.The acceptable unit
      *            values are: Feet, Kilometres, Miles and Meters. The
-     *            searchRadiusUnit is optional, if not provided; the �Feet�
+     *            searchRadiusUnit is optional, if not provided; the Feet
      *            value is taken by default. The specified values are
      *            case-insensitive.
      * @param maxCandidates
@@ -75,9 +75,45 @@ public interface GeoSearchService {
      *            Mandatory - Asynchronous request observer
      */
     public void geoSearch(Context context, String searchText,
-            Double originLatitude, Double originLongitude,
-            Float searchRadius, String searchRadiusUnit,
-            Integer maxCandidates,
-            final RequestObserver<GeoSearch> requestObserver);
+                          Double originLatitude, Double originLongitude,
+                          Float searchRadius, String searchRadiusUnit,
+                          Integer maxCandidates,
+                          final RequestObserver<GeoSearch> requestObserver);
 
+
+    /**
+     *
+     * @param context
+     * @param searchText
+     * @param country
+     * @param requestObserver
+     */
+    public void geoSearch(Context context, String searchText, String country, final RequestObserver<GeoSearch> requestObserver);
+
+
+    /**
+     *
+     * @param context
+     * @param searchText
+     * @param country
+     * @param searchRadius
+     * @param searchRadiusUnit
+     * @param maxCandidates
+     * @param requestObserver
+     */
+    public void geoSearch(Context context, String searchText, String country, Float searchRadius, String searchRadiusUnit, Integer maxCandidates, final RequestObserver<GeoSearch> requestObserver);
+
+    /**
+     *
+     * @param context
+     * @param searchText
+     * @param originLatitude
+     * @param originLongitude
+     * @param country
+     * @param searchRadius
+     * @param searchRadiusUnit
+     * @param maxCandidates
+     * @param requestObserver
+     */
+    public void geoSearch(Context context, String searchText, Double originLatitude, Double originLongitude, String country, Float searchRadius, String searchRadiusUnit, Integer maxCandidates, final RequestObserver<GeoSearch> requestObserver);
 }

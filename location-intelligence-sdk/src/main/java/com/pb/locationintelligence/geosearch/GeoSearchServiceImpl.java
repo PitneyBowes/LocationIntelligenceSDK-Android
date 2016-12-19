@@ -35,9 +35,9 @@ import com.pb.locationintelligence.utils.Utils;
 /**
  * Implementation of Geo Search Interface This implementation is tightly coupled
  * with network layer
- * 
+ *
  * @author ga007ja
- * 
+ *
  */
 public class GeoSearchServiceImpl extends OAuthService implements
         GeoSearchService {
@@ -51,10 +51,10 @@ public class GeoSearchServiceImpl extends OAuthService implements
      */
     @Override
     public void geoSearch(final Context context, final String searchText,
-            final Double originLatitude, final Double originLongitude,
-            final Float searchRadius, final String searchRadiusUnit,
-            final Integer maxCandidates, 
-            final RequestObserver<GeoSearch> requestObserver) {
+                          final Double originLatitude, final Double originLongitude,
+                          final Float searchRadius, final String searchRadiusUnit,
+                          final Integer maxCandidates,
+                          final RequestObserver<GeoSearch> requestObserver) {
 
         /**
          * It also checks for authentication, If authentication is successful
@@ -69,9 +69,9 @@ public class GeoSearchServiceImpl extends OAuthService implements
             public void onSucess(AuthToken data) {
                 Log.d("Authentication is sucessfull, It's time to call GeoSearch APIs ");
                 geoSearchInternal(context, searchText, originLatitude,
-                        originLongitude, searchRadius, searchRadiusUnit,
+                        originLongitude, null, searchRadius, searchRadiusUnit,
                         maxCandidates, requestObserver);
-              
+
             }
 
             @Override
@@ -97,8 +97,8 @@ public class GeoSearchServiceImpl extends OAuthService implements
 
     @Override
     public void geoSearch(final Context context, final String searchText,
-            final Double originLatitude, final Double originLongitude,
-            final RequestObserver<GeoSearch> requestObserver) {
+                          final Double originLatitude, final Double originLongitude,
+                          final RequestObserver<GeoSearch> requestObserver) {
 
         /**
          * It also checks for authentication, If authentication is successful
@@ -113,8 +113,8 @@ public class GeoSearchServiceImpl extends OAuthService implements
             public void onSucess(AuthToken data) {
                 Log.d("Authentication is sucessfull, It's time to call GeoSearch APIs ");
                 geoSearchInternal(context, searchText, originLatitude,
-                        originLongitude, null, null, null, requestObserver);
-              
+                        originLongitude,null, null, null, null, requestObserver);
+
             }
 
             @Override
@@ -132,22 +132,120 @@ public class GeoSearchServiceImpl extends OAuthService implements
 
     }
 
+    @Override
+    public void geoSearch(final Context context, final String searchText, final String country, final Float searchRadius, final String searchRadiusUnit, final Integer maxCandidates, final RequestObserver<GeoSearch> requestObserver)
+    {
+
+        super.getAuthenticationToken(context, new RequestObserver<AuthToken>()
+        {
+            @Override
+            public void onSucess(AuthToken data)
+            {
+                Log.d("Authentication is sucessfull, It's time to call GeoSearch APIs ");
+                geoSearchInternal(context, searchText, null, null, country, searchRadius, searchRadiusUnit, maxCandidates, requestObserver);
+            }
+
+            @Override
+            public void onRequestStart()
+            {
+                Log.d("Authentication request has been started for GeoSearch ");
+            }
+
+            @Override
+            public void onFailure(ErrorResponse errorData)
+            {
+                Log.e("Authentication request has been failed" + errorData);
+                requestObserver.onFailure(errorData);
+            }
+        });
+
+    }
+
+    @Override
+    public void geoSearch(final Context context, final String searchText, final String country, final RequestObserver<GeoSearch> requestObserver)
+    {
+        super.getAuthenticationToken(context, new RequestObserver<AuthToken>()
+        {
+            @Override
+            public void onSucess(AuthToken data)
+            {
+                Log.d("Authentication is sucessfull, It's time to call GeoSearch APIs ");
+                geoSearchInternal(context, searchText, null, null, country, null, null, null, requestObserver);
+
+            }
+
+            @Override
+            public void onRequestStart() {
+                Log.d("Authentication request has been started for GeoSearch ");
+
+            }
+
+            @Override
+            public void onFailure(ErrorResponse errorData) {
+                Log.e("Authentication request has been failed" + errorData);
+                requestObserver.onFailure(errorData);
+            }
+        });
+
+    }
+
+    @Override
+    public void geoSearch(final Context context, final String searchText, final Double originLatitude, final Double originLongitude, final String country, final Float searchRadius, final String searchRadiusUnit, final Integer maxCandidates, final RequestObserver<GeoSearch> requestObserver)
+    {
+
+        super.getAuthenticationToken(context, new RequestObserver<AuthToken>()
+        {
+            @Override
+            public void onSucess(AuthToken data)
+            {
+                Log.d("Authentication is sucessfull, It's time to call GeoSearch APIs ");
+                geoSearchInternal(context, searchText, originLatitude, originLongitude, country, searchRadius, searchRadiusUnit, maxCandidates, requestObserver);
+            }
+
+            @Override
+            public void onRequestStart()
+            {
+                Log.d("Authentication request has been started for GeoSearch ");
+            }
+
+            @Override
+            public void onFailure(ErrorResponse errorData)
+            {
+                Log.e("Authentication request has been failed" + errorData);
+                requestObserver.onFailure(errorData);
+            }
+        });
+
+    }
+
     private void geoSearchInternal(Context context, String searchText,
-            Double originLatitude, Double originLongitude,
-            Float searchRadius, String searchRadiusUnit,
-            Integer maxCandidates,
-            final RequestObserver<GeoSearch> requestObserver) {
+                                   Double originLatitude, Double originLongitude, String country,
+                                   Float searchRadius, String searchRadiusUnit,
+                                   Integer maxCandidates,
+                                   final RequestObserver<GeoSearch> requestObserver) {
 
         Log.d("Calling GeoSearch Service to retrieve  list of places and "
                 + "points of interest near the input text/location vicinity ");
         urlMaker = UrlMaker.getInstance();
         StringBuilder urlBuilder = new StringBuilder(
                 urlMaker.getAbsoluteUrl(geoSearchUrl)).append("searchText=")
-                .append(urlMaker.getEncodedURL(getString(searchText))).append("&longitude=")
-                .append(urlMaker.getEncodedURL(getString(originLongitude))).append("&latitude=")
-                .append(urlMaker.getEncodedURL(getString(originLatitude)));
+                .append(urlMaker.getEncodedURL(getString(searchText)));
 
-       
+        if (originLongitude != null)
+        {
+            urlBuilder.append("&longitude=").append(urlMaker.getEncodedURL(getString(originLongitude)));
+        }
+
+        if (originLatitude != null)
+        {
+            urlBuilder.append("&latitude=").append(urlMaker.getEncodedURL(getString(originLatitude)));
+        }
+
+        if (country != null)
+        {
+            urlBuilder.append("&country=").append(urlMaker.getEncodedURL(getString(country)));
+        }
+
         if (searchRadius != null) {
             urlBuilder.append("&searchRadius=").append(urlMaker.getEncodedURL(getString(searchRadius)));
         }
@@ -165,65 +263,65 @@ public class GeoSearchServiceImpl extends OAuthService implements
         _GetRestService = new GetRestService(context, urlBuilder.toString(),
                 null,this, new RequestObserver<String>() {
 
-                    @Override
-                    public void onSucess(String geoSearch) {
-                        // Log.d("Got Geo Search Details" + data);
-                        // Parsing would take place here
+            @Override
+            public void onSucess(String geoSearch) {
+                // Log.d("Got Geo Search Details" + data);
+                // Parsing would take place here
 
-                        GeoSearch geoSearchObj = null;
+                GeoSearch geoSearchObj = null;
 
-                        try {
-                            JSONObject responseObj = new JSONObject(geoSearch);
-                            Gson gson = new Gson();
-                            geoSearchObj = gson.fromJson(
-                                    responseObj.toString(), GeoSearch.class);
+                try {
+                    JSONObject responseObj = new JSONObject(geoSearch);
+                    Gson gson = new Gson();
+                    geoSearchObj = gson.fromJson(
+                            responseObj.toString(), GeoSearch.class);
 
-                            Log.d("Got the geoSearch Objeect" + geoSearchObj);
-                            Log.d("The size is "
-                                    + geoSearchObj.getLocation().length);
+                    Log.d("Got the geoSearch Objeect" + geoSearchObj);
+                    Log.d("The size is "
+                            + geoSearchObj.getLocation().length);
 
-                        } catch (JSONException e) {
-                            Log.e("Excpetion in Json parsing of geo search"
-                                    + e.getMessage());
+                } catch (JSONException e) {
+                    Log.e("Excpetion in Json parsing of geo search"
+                            + e.getMessage());
 
-                            ErrorResponse errorResponse = new ErrorResponse(
-                                    Utils.getInternalErrorResponseObject(
-                                            e.getMessage(), e));
-                            errorResponse.setRootErrorMessage(e.getMessage());
-                            requestObserver.onFailure(errorResponse);
+                    ErrorResponse errorResponse = new ErrorResponse(
+                            Utils.getInternalErrorResponseObject(
+                                    e.getMessage(), e));
+                    errorResponse.setRootErrorMessage(e.getMessage());
+                    requestObserver.onFailure(errorResponse);
 
-                            return;
+                    return;
 
-                        }
+                }
 
 
-                        requestObserver.onSucess(geoSearchObj);
-                    }
+                requestObserver.onSucess(geoSearchObj);
+            }
 
-                    @Override
-                    public void onRequestStart() {
-                        Log.d("Geo Search request has been started");
-                        requestObserver.onRequestStart();
-                    }
+            @Override
+            public void onRequestStart() {
+                Log.d("Geo Search request has been started");
+                requestObserver.onRequestStart();
+            }
 
-                    @Override
-                    public void onFailure(ErrorResponse errorResponse) {
-                        Log.d("Oops Retrieval of Geo Search failes");
-                        
-                        requestObserver.onFailure(errorResponse);
-                    	
+            @Override
+            public void onFailure(ErrorResponse errorResponse) {
+                Log.d("Oops Retrieval of Geo Search failes");
 
-                    }
-                });
+                requestObserver.onFailure(errorResponse);
+
+
+            }
+        });
         _GetRestService.execute();
 
     }
-    
+
     private String getString(Object value) {
-		if (value == null) {
-			return "";
-		}
-		return value.toString();
-	}
+        if (value == null) {
+            return "";
+        }
+        return value.toString();
+    }
 
 }
