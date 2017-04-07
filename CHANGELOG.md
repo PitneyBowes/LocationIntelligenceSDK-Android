@@ -1,10 +1,20 @@
+## 3.0.0 - 2017-03-24
+- Changes for GeoEnhance
+- Added new API GeoRisk
+- Added new API GeoRoute
+- Added new API GeoZone
+
 ## 2.6.0 - 2016-12-19
 - Changes for Geosearch
 
 ## 2.5.0 - 2016-10-03
 - Changes for GeoComm API.
 - Changes for AHJ Geo911.
-- Changes for GeoTaxBatch.
-- Model definition Update.
+- Changes for GeoTaxBatch
+- Model Definition update.
+
+
+## 2.0.0 - 2016-07-04
+
 ### Added
-- Added 2.0 Version of Android SDK which has Location Intelligence API features GeoEnhance,GeoLife,GeoSearch,Geo911,GeoTax and Geocode.
+- Added 2.0 Version of Java SDK which has Location Intelligence API features GeoEnhance,GeoLife,GeoSearch,Geo911,GeoTax and Geocode.
