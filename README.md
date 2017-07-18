@@ -29,6 +29,8 @@
 
 * [GeoRisk](https://locate.pitneybowes.com/georisk): Returns critical risk intelligence with the input of Location Coordinates or Addresses. Critical for any Risk Mitigation Analyses involving threats to lives or property.
 
+* [GeoProperty](https://locate.pitneybowes.com/geoproperty)::  Property Details. Capture property details for analysis and planning. The GeoProperty API returns extensive property attributes with the input of address or PB key. Critical for any property investment, insurance or risk analysis and mitigation.
+
 The following platforms are supported by Location Intelligence SDKs:
 *	[Android](https://locate.pitneybowes.com/docs/location-intelligence/v1/en/index.html#Android%20SDK/android_intro.html)
 *	[JavaScript](https://locate.pitneybowes.com/docs/location-intelligence/v1/en/index.html#Java%20Script%20SDK/js_intro.html) 
@@ -45,7 +47,4 @@ Location Intelligence Android SDK facilitates you to build Android applications 
 ### Getting Started
 To get started with Android SDK, you must first register at [Location Intelligence API Home Page](http://developer.pitneybowes.com/en/location-intelligence.html) and obtain your API Key and Secret to get started with the Android SDK and call Location Intelligence APIs.
 For more information refer to [‘Getting Started with Android SDK’](https://developer2.pitneybowes.com/docs/location-intelligence/v1/en/index.html#AndroidSDK/android_gettingstart.html) section in documentation.
-
-### LocationIntelligenceSDK-Java contains the following software
-* GSON, version number 2.3.1 which is licensed under Apache license, version number 2.0.  The license can be downloaded from http://www.apache.org/licenses/LICENSE-2.0.  The source code for this software is available from http://code.google.com/p/google-gson/.
-* Volley, version number 1.0.0 which is licensed under Apache license, version number 2.0.  The license can be downloaded from http://www.apache.org/licenses/LICENSE-2.0.  The source code for this software is available from http://developer.android.com/training/volley/index.html. 
+Samples are povided as part of Release.
