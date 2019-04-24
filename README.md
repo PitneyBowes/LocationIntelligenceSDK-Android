@@ -51,7 +51,7 @@ The following platforms are supported by Location Intelligence SDKs:
 Location Intelligence Android SDK facilitates you to build Android applications using Location Intelligence APIs.
 ### Getting Started
 To get started with Android SDK, you must first register at [Location Intelligence API Home Page](http://developer.pitneybowes.com/en/location-intelligence.html) and obtain your API Key and Secret to get started with the Android SDK and call Location Intelligence APIs.
-For more information refer to [â€˜Getting Started with Android SDKâ€™](https://developer2.pitneybowes.com/docs/location-intelligence/v1/en/index.html#AndroidSDK/android_gettingstart.html) section in documentation.
+For more information refer to [‘Getting Started with Android SDK’](https://developer2.pitneybowes.com/docs/location-intelligence/v1/en/index.html#AndroidSDK/android_gettingstart.html) section in documentation.
 Samples are povided as part of Release.
 
 ## Samples
